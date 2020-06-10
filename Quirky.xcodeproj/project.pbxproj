@@ -13,6 +13,8 @@
 		205C0355248E679000BB2B6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 205C0353248E679000BB2B6F /* Main.storyboard */; };
 		205C0357248E679200BB2B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 205C0356248E679200BB2B6F /* Assets.xcassets */; };
 		205C035A248E679200BB2B6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 205C0358248E679200BB2B6F /* LaunchScreen.storyboard */; };
+		20D4CB8A248F684900158583 /* candle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 20D4CB89248F684900158583 /* candle.gif */; };
+		20D4CB8E248F69B100158583 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D4CB8D248F69B100158583 /* GIFImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,9 @@
 		205C0356248E679200BB2B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		205C0359248E679200BB2B6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		205C035B248E679200BB2B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20D4CB89248F684900158583 /* candle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = candle.gif; path = ../../../Downloads/candle.gif; sourceTree = "<group>"; };
+		20D4CB8C248F68A100158583 /* candle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = candle.gif; sourceTree = "<group>"; };
+		20D4CB8D248F69B100158583 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +61,26 @@
 		205C034C248E679000BB2B6F /* Quirky */ = {
 			isa = PBXGroup;
 			children = (
+				20D4CB8B248F689800158583 /* gif */,
 				205C034D248E679000BB2B6F /* AppDelegate.swift */,
 				205C034F248E679000BB2B6F /* SceneDelegate.swift */,
 				205C0351248E679000BB2B6F /* ViewController.swift */,
 				205C0353248E679000BB2B6F /* Main.storyboard */,
+				20D4CB89248F684900158583 /* candle.gif */,
 				205C0356248E679200BB2B6F /* Assets.xcassets */,
 				205C0358248E679200BB2B6F /* LaunchScreen.storyboard */,
 				205C035B248E679200BB2B6F /* Info.plist */,
+				20D4CB8D248F69B100158583 /* GIFImage.swift */,
 			);
 			path = Quirky;
+			sourceTree = "<group>";
+		};
+		20D4CB8B248F689800158583 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				20D4CB8C248F68A100158583 /* candle.gif */,
+			);
+			path = gif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +144,7 @@
 				205C035A248E679200BB2B6F /* LaunchScreen.storyboard in Resources */,
 				205C0357248E679200BB2B6F /* Assets.xcassets in Resources */,
 				205C0355248E679000BB2B6F /* Main.storyboard in Resources */,
+				20D4CB8A248F684900158583 /* candle.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +157,7 @@
 			files = (
 				205C0352248E679000BB2B6F /* ViewController.swift in Sources */,
 				205C034E248E679000BB2B6F /* AppDelegate.swift in Sources */,
+				20D4CB8E248F69B100158583 /* GIFImage.swift in Sources */,
 				205C0350248E679000BB2B6F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
