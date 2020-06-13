@@ -133,6 +133,7 @@
                         <outlet property="countUpLabel" destination="v1B-e1-S02" id="hWC-pF-gvV"/>
                         <outlet property="putFingerButton" destination="vfp-ob-MQx" id="kWc-6D-EDG"/>
                         <outlet property="titleLabel" destination="1Sj-vJ-gBw" id="06E-yR-Oh3"/>
+                        <segue destination="GIt-k9-0zl" kind="show" identifier="toLevelTwo" id="4l5-5Y-Tru"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efd-cV-8u6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -140,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="1879.7101449275365" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Happy Birthday Controller-->
         <scene sceneID="l9J-ko-5mP">
             <objects>
-                <viewController id="GIt-k9-0zl" sceneMemberID="viewController">
+                <viewController id="GIt-k9-0zl" customClass="HappyBirthdayController" customModule="Quirky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tum-3i-sPs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -155,15 +156,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zuc-WR-38h">
-                                <rect key="frame" x="20" y="59" width="27" height="27"/>
+                                <rect key="frame" x="20" y="103" width="27" height="27"/>
                                 <state key="normal" image="nav_close"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykq-5t-U2f">
-                                <rect key="frame" x="321" y="59" width="32" height="25"/>
+                                <rect key="frame" x="321" y="103" width="32" height="25"/>
                                 <state key="normal" image="nav_sound"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCg-fb-SVE">
-                                <rect key="frame" x="367" y="59" width="27" height="26"/>
+                                <rect key="frame" x="367" y="103" width="27" height="26"/>
                                 <state key="normal" image="nav_hint"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Happy " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egy-q5-fGC">
@@ -172,14 +173,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.20.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWH-pM-bVj">
-                                <rect key="frame" x="20" y="59" width="374" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0h 0m 0s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWH-pM-bVj">
+                                <rect key="frame" x="20" y="103" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="candle_new.gif" translatesAutoresizingMaskIntoConstraints="NO" id="Xs7-wC-HSd">
-                                <rect key="frame" x="160" y="284" width="93" height="436"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="candle.gif" translatesAutoresizingMaskIntoConstraints="NO" id="Xs7-wC-HSd">
+                                <rect key="frame" x="160" y="328" width="93" height="392"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.30980392156862746" green="0.45098039215686275" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -207,42 +208,50 @@
                         <viewLayoutGuide key="safeArea" id="TDR-Yy-64p"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fwr-04-qnZ"/>
+                    <connections>
+                        <outlet property="buttonClose" destination="Zuc-WR-38h" id="hbp-JZ-t6x"/>
+                        <outlet property="buttonHint" destination="oCg-fb-SVE" id="LJ7-5C-KXJ"/>
+                        <outlet property="buttonSound" destination="ykq-5t-U2f" id="1TV-2s-Xpt"/>
+                        <outlet property="candleImage" destination="Xs7-wC-HSd" id="BQl-Yt-lVd"/>
+                        <outlet property="countUpLabel" destination="XWH-pM-bVj" id="Coz-tK-iiO"/>
+                        <segue destination="gwG-rP-qLo" kind="show" identifier="toLevelThree" id="KSM-Sw-VEG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43n-0P-tSv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2725.5999999999999" y="137.4384236453202"/>
         </scene>
-        <!--View Controller-->
+        <!--Bottle Controller-->
         <scene sceneID="LyE-hJ-5zj">
             <objects>
-                <viewController id="gwG-rP-qLo" sceneMemberID="viewController">
+                <viewController id="gwG-rP-qLo" customClass="BottleController" customModule="Quirky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="516-MJ-B29">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottle" translatesAutoresizingMaskIntoConstraints="NO" id="CsT-NC-NLp">
-                                <rect key="frame" x="137" y="266" width="140" height="416"/>
+                                <rect key="frame" x="137" y="310" width="140" height="372"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsQ-Yf-zpm">
-                                <rect key="frame" x="20" y="59" width="27" height="27"/>
+                                <rect key="frame" x="20" y="103" width="27" height="27"/>
                                 <state key="normal" image="nav_close"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqa-Ds-qzG">
-                                <rect key="frame" x="321" y="59" width="32" height="25"/>
+                                <rect key="frame" x="321" y="103" width="32" height="25"/>
                                 <state key="normal" image="nav_sound"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1k0-3w-A8x">
-                                <rect key="frame" x="367" y="59" width="27" height="26"/>
+                                <rect key="frame" x="367" y="103" width="27" height="26"/>
                                 <state key="normal" image="nav_hint"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorporate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQa-ze-Qc8">
-                                <rect key="frame" x="20" y="154" width="374" height="58"/>
+                                <rect key="frame" x="20" y="198" width="374" height="58"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.20.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5v-MG-goK">
-                                <rect key="frame" x="20" y="59" width="374" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0h 0m 0s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5v-MG-goK">
+                                <rect key="frame" x="20" y="103" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -270,107 +279,124 @@
                         <viewLayoutGuide key="safeArea" id="kBJ-TG-jIj"/>
                     </view>
                     <navigationItem key="navigationItem" id="nbR-EV-yas"/>
+                    <connections>
+                        <outlet property="bottleImage" destination="CsT-NC-NLp" id="fuB-VG-1EB"/>
+                        <outlet property="buttonClose" destination="wsQ-Yf-zpm" id="tgt-Oi-wXG"/>
+                        <outlet property="buttonHint" destination="1k0-3w-A8x" id="xzv-Xn-H1z"/>
+                        <outlet property="buttonSound" destination="Yqa-Ds-qzG" id="XjL-at-FdY"/>
+                        <outlet property="countUpLabel" destination="s5v-MG-goK" id="1Vd-ff-NVb"/>
+                        <segue destination="WBg-oC-fnF" kind="show" identifier="toLevelFour" id="IOs-jP-bCZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKY-WT-xEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3542.0289855072465" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Gyro Ball Controller-->
         <scene sceneID="2Pt-Tr-Lc0">
             <objects>
-                <viewController id="WBg-oC-fnF" sceneMemberID="viewController">
+                <viewController id="WBg-oC-fnF" customClass="GyroBallController" customModule="Quirky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hqW-lr-MS8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="wdS-Eb-oth">
-                                <rect key="frame" x="20" y="763" width="99" height="99"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOj-pb-crP">
-                                <rect key="frame" x="20" y="59" width="27" height="27"/>
+                                <rect key="frame" x="20" y="103" width="27" height="27"/>
                                 <state key="normal" image="nav_close_merah"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K66-pQ-uuY">
-                                <rect key="frame" x="321" y="59" width="32" height="25"/>
+                                <rect key="frame" x="321" y="103" width="32" height="25"/>
                                 <state key="normal" image="nav_sound_merah"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9Q-GB-VXt">
-                                <rect key="frame" x="367" y="59" width="27" height="26"/>
+                                <rect key="frame" x="367" y="103" width="27" height="26"/>
                                 <state key="normal" image="nav_hint_merah"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.20.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vne-f4-YvK">
-                                <rect key="frame" x="20" y="59" width="374" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0h 0m 0s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vne-f4-YvK">
+                                <rect key="frame" x="20" y="103" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hole" translatesAutoresizingMaskIntoConstraints="NO" id="W6g-M1-1VG">
-                                <rect key="frame" x="108" y="307" width="198" height="291"/>
+                                <rect key="frame" x="132" y="322" width="149" height="261"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="wdS-Eb-oth">
+                                <rect key="frame" x="20" y="763" width="99" height="99"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.84705882352941175" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="pOj-pb-crP" firstAttribute="leading" secondItem="Cbw-yD-COY" secondAttribute="leading" constant="20" id="2rk-or-Txe"/>
-                            <constraint firstItem="W6g-M1-1VG" firstAttribute="leading" secondItem="Cbw-yD-COY" secondAttribute="leading" constant="108" id="3DV-Gw-fpY"/>
                             <constraint firstItem="Cbw-yD-COY" firstAttribute="trailing" secondItem="Vne-f4-YvK" secondAttribute="trailing" constant="20" id="3fj-q5-2tt"/>
+                            <constraint firstItem="Cbw-yD-COY" firstAttribute="trailing" secondItem="W6g-M1-1VG" secondAttribute="trailing" constant="133" id="3zN-qf-UgS"/>
                             <constraint firstItem="Vne-f4-YvK" firstAttribute="top" secondItem="Cbw-yD-COY" secondAttribute="top" constant="15" id="4yd-hE-aMh"/>
                             <constraint firstItem="wdS-Eb-oth" firstAttribute="leading" secondItem="Cbw-yD-COY" secondAttribute="leading" constant="20" id="86D-kd-j9U"/>
+                            <constraint firstItem="Cbw-yD-COY" firstAttribute="bottom" secondItem="W6g-M1-1VG" secondAttribute="bottom" constant="279" id="9bx-1g-BAb"/>
                             <constraint firstItem="K66-pQ-uuY" firstAttribute="top" secondItem="Cbw-yD-COY" secondAttribute="top" constant="15" id="MiT-kj-otp"/>
                             <constraint firstItem="h9Q-GB-VXt" firstAttribute="top" secondItem="Cbw-yD-COY" secondAttribute="top" constant="15" id="NXZ-LL-wHp"/>
                             <constraint firstItem="wdS-Eb-oth" firstAttribute="bottom" secondItem="Cbw-yD-COY" secondAttribute="bottom" id="VaV-tg-JsU"/>
                             <constraint firstItem="pOj-pb-crP" firstAttribute="top" secondItem="Cbw-yD-COY" secondAttribute="top" constant="15" id="Vql-QU-sWw"/>
+                            <constraint firstItem="W6g-M1-1VG" firstAttribute="leading" secondItem="Cbw-yD-COY" secondAttribute="leading" constant="132" id="Xz6-3N-xeb"/>
                             <constraint firstItem="Vne-f4-YvK" firstAttribute="leading" secondItem="Cbw-yD-COY" secondAttribute="leading" constant="20" id="b3B-4h-Ng1"/>
                             <constraint firstItem="Cbw-yD-COY" firstAttribute="trailing" secondItem="K66-pQ-uuY" secondAttribute="trailing" constant="61" id="iCL-jx-u4j"/>
-                            <constraint firstItem="W6g-M1-1VG" firstAttribute="top" secondItem="Cbw-yD-COY" secondAttribute="top" constant="263" id="iNs-En-DY9"/>
-                            <constraint firstItem="Cbw-yD-COY" firstAttribute="trailing" secondItem="W6g-M1-1VG" secondAttribute="trailing" constant="108" id="o0u-nd-W4a"/>
-                            <constraint firstItem="Cbw-yD-COY" firstAttribute="bottom" secondItem="W6g-M1-1VG" secondAttribute="bottom" constant="264" id="ugB-CX-0r3"/>
+                            <constraint firstItem="W6g-M1-1VG" firstAttribute="top" secondItem="Cbw-yD-COY" secondAttribute="top" constant="234" id="qwx-hS-gX1"/>
                             <constraint firstItem="Cbw-yD-COY" firstAttribute="trailing" secondItem="h9Q-GB-VXt" secondAttribute="trailing" constant="20" id="xam-of-rPy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cbw-yD-COY"/>
                     </view>
                     <navigationItem key="navigationItem" id="GeM-hK-tph"/>
+                    <connections>
+                        <outlet property="ballImage" destination="wdS-Eb-oth" id="hV8-An-f1G"/>
+                        <outlet property="buttonClose" destination="pOj-pb-crP" id="XQs-dw-cNL"/>
+                        <outlet property="buttonHint" destination="h9Q-GB-VXt" id="oH5-eA-edS"/>
+                        <outlet property="buttonSound" destination="K66-pQ-uuY" id="SLR-Gb-d8c"/>
+                        <outlet property="centerHoleImage" destination="W6g-M1-1VG" id="0Kq-28-zQ2"/>
+                        <outlet property="countUpLabel" destination="Vne-f4-YvK" id="Gnl-Ex-Cql"/>
+                        <segue destination="WgD-yg-vZ9" kind="show" identifier="toLevelFive" id="HeM-hN-yrU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W1K-1e-9qx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4360.8695652173919" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Cheese Controller-->
         <scene sceneID="Fjl-6q-uMi">
             <objects>
-                <viewController id="WgD-yg-vZ9" sceneMemberID="viewController">
+                <viewController id="WgD-yg-vZ9" customClass="CheeseController" customModule="Quirky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7PP-kk-qFJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cheese" translatesAutoresizingMaskIntoConstraints="NO" id="vhG-u9-he5">
-                                <rect key="frame" x="45" y="196" width="324" height="410"/>
+                                <rect key="frame" x="45" y="240" width="324" height="366"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq9-vt-kv2">
-                                <rect key="frame" x="20" y="59" width="27" height="27"/>
+                                <rect key="frame" x="20" y="103" width="27" height="27"/>
                                 <state key="normal" image="nav_close_merah"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOa-8T-YWv">
-                                <rect key="frame" x="321" y="59" width="32" height="25"/>
+                                <rect key="frame" x="321" y="103" width="32" height="25"/>
                                 <state key="normal" image="nav_sound_merah"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cheese" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeB-R8-8vw">
-                                <rect key="frame" x="20" y="122" width="374" height="45.5"/>
+                                <rect key="frame" x="20" y="166" width="374" height="45.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
                                 <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.20.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVx-og-eHk">
-                                <rect key="frame" x="20" y="59" width="374" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0h 0m 0s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVx-og-eHk">
+                                <rect key="frame" x="20" y="103" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klO-1W-Tax">
-                                <rect key="frame" x="367" y="59" width="27" height="26"/>
+                                <rect key="frame" x="367" y="103" width="27" height="26"/>
                                 <state key="normal" image="nav_hint_merah"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sd6-O5-Iet">
-                                <rect key="frame" x="143" y="554" width="127" height="288"/>
+                                <rect key="frame" x="143" y="598" width="127" height="244"/>
                                 <state key="normal" image="ic_camera"/>
                             </button>
                         </subviews>
@@ -400,6 +426,14 @@
                         <viewLayoutGuide key="safeArea" id="Fpl-dD-TQD"/>
                     </view>
                     <navigationItem key="navigationItem" id="XBB-ES-qK0"/>
+                    <connections>
+                        <outlet property="buttonCamera" destination="Sd6-O5-Iet" id="yHG-lu-uLw"/>
+                        <outlet property="buttonClose" destination="dq9-vt-kv2" id="V7a-Q2-m3K"/>
+                        <outlet property="buttonHint" destination="klO-1W-Tax" id="02f-bQ-rN6"/>
+                        <outlet property="buttonSound" destination="GOa-8T-YWv" id="D5H-BY-eRf"/>
+                        <outlet property="cheeseImage" destination="vhG-u9-he5" id="x63-KW-s4X"/>
+                        <outlet property="countUpLabel" destination="ZVx-og-eHk" id="3EW-ED-ubi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPa-zm-b5C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -427,8 +461,8 @@
     <resources>
         <image name="arrow finger here" width="149" height="386"/>
         <image name="ball" width="99" height="99"/>
-        <image name="bottle" width="137" height="416"/>
-        <image name="candle_new.gif" width="135" height="1053"/>
+        <image name="bottle" width="149" height="428"/>
+        <image name="candle.gif" width="135" height="1053"/>
         <image name="cheese" width="332" height="410"/>
         <image name="hole" width="140" height="140"/>
         <image name="ic_camera" width="88" height="71"/>

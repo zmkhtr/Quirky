@@ -29,6 +29,7 @@ class PutYourFingerController: UIViewController {
     
     var timer : Timer?
 
+    var timerCountUp : Timer?
     var count = 3
     
     override func viewDidLoad() {
@@ -37,7 +38,7 @@ class PutYourFingerController: UIViewController {
         //        let gif = UIImage.gifImageWithName("candle")
         //        imageLilin.image = gif
         initLongPressButtonListener()
-        startCountUpTimer(label: countUpLabel)
+        startCountUpTimer(label: countUpLabel, timer: &timerCountUp)
     }
     
     func initTimer(){
@@ -51,14 +52,14 @@ class PutYourFingerController: UIViewController {
             count = count - 1
             countDownLabel.text = String(count)
             if (count == 0){
-                print("win")
+                performSegue(withIdentifier: "toLevelTwo", sender: nil)
             }
         }
     }
     
     func initLongPressButtonListener(){
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(long(gesture:)))
-        //        longPressGesture.minimumPressDuration = 1
+//        longPressGesture.minimumPressDuration = 0.5
         putFingerButton.addGestureRecognizer(longPressGesture)
     }
     

@@ -39,10 +39,9 @@ extension UIViewController {
         }
     }
     
-    func startCountUpTimer(label : UILabel){
+    func startCountUpTimer(label : UILabel, timer: inout Timer?){
         var count = 0
-        
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if(count > -1) {
                 count = count + 1
                 let (h,m,s) = self.secondsToHoursMinutesSeconds(seconds: count)
@@ -50,8 +49,16 @@ extension UIViewController {
             }
         }
     }
+    func stopCountUpTimer(timer: Timer){
+        timer.invalidate()
+    }
     
     func secondsToHoursMinutesSeconds(seconds : Int) -> (Int, Int, Int) {
       return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
+    
+  
+}
+protocol timerStop {
+      func onTimerStop()
 }

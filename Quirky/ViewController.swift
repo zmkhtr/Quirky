@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var startLabel: UILabel!
 
-    let text = "Touch anywhere to Start"
+    let text = "Tap anywhere to Start"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +21,13 @@ class ViewController: UIViewController {
         //        imageLilin.image = gif
         
         hideNavigationBar()
-        setAnywhereClickable()
+        setAnywhereClickableAndBlinking()
     }
     
     
-    func setAnywhereClickable(){
+    func setAnywhereClickableAndBlinking(){
         startLabel.text = text
-
+//        startLabel.startBlink()
         startLabel.isUserInteractionEnabled = true
         startLabel.addGestureRecognizer(UITapGestureRecognizer(target:self, action: #selector(tapLabel(gesture:))))
     }
@@ -43,6 +43,22 @@ class ViewController: UIViewController {
         } else {
             print("Tapped none")
         }
+    }
+}
+
+extension UILabel {
+
+    func startBlink() {
+        UIView.animate(withDuration: 0.5,
+              delay:0.0,
+              options:[.allowUserInteraction, .curveEaseInOut, .autoreverse, .repeat],
+              animations: { self.alpha = 0 },
+              completion: nil)
+    }
+
+    func stopBlink() {
+        layer.removeAllAnimations()
+        alpha = 1
     }
 }
 
