@@ -39,8 +39,8 @@ extension UIViewController {
         }
     }
     
-    func startCountUpTimer(label : UILabel, timer: inout Timer?){
-        var count = 0
+    func startCountUpTimer(label : UILabel, timer: inout Timer?, timeStart : Int){
+        var count = timeStart
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if(count > -1) {
                 count = count + 1
@@ -54,11 +54,50 @@ extension UIViewController {
     }
     
     func secondsToHoursMinutesSeconds(seconds : Int) -> (Int, Int, Int) {
-      return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
-  
-}
-protocol timerStop {
-      func onTimerStop()
+    
+    func decreaseVolume(image : UIImageView, volume : inout Int){
+        volume -= 1
+        
+        if (volume <= 0){
+            volume = 0
+        }
+        
+        switch volume {
+        case 3:
+            image.image = #imageLiteral(resourceName: "sound_three")
+        case 2:
+            image.image = #imageLiteral(resourceName: "sound_two")
+        case 1:
+            image.image = #imageLiteral(resourceName: "sound_one")
+        case 0:
+            image.image = #imageLiteral(resourceName: "sound_mute")
+        default:
+            image.image = #imageLiteral(resourceName: "sound_three")
+        }
+    }
+    
+    func increaseVolume(image : UIImageView, volume : inout Int){
+        volume += 1
+        
+        if (volume >= 3){
+            volume = 3
+        }
+        
+        
+        switch volume {
+        case 3:
+            image.image = #imageLiteral(resourceName: "sound_three")
+        case 2:
+            image.image = #imageLiteral(resourceName: "sound_two")
+        case 1:
+            image.image = #imageLiteral(resourceName: "sound_one")
+        case 0:
+            image.image = #imageLiteral(resourceName: "sound_mute")
+        default:
+            image.image = #imageLiteral(resourceName: "sound_three")
+        }
+    }
 }

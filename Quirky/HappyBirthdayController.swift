@@ -15,7 +15,7 @@ class HappyBirthdayController: UIViewController {
     var recorder: AVAudioRecorder!
     var levelTimer = Timer()
     
-    let LEVEL_THRESHOLD: Float = -10.0
+    let LEVEL_THRESHOLD: Float = -5.0
     
     @IBOutlet weak var candleImage: UIImageView!
     
@@ -27,12 +27,14 @@ class HappyBirthdayController: UIViewController {
     
     var timer : Timer?
     
+    var timeStart = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadCandleGif()
         listenToBlowMic()
-        startCountUpTimer(label: countUpLabel, timer: &timer)
+        startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
     func loadCandleGif(){

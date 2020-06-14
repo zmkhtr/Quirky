@@ -21,11 +21,14 @@ class BottleController: UIViewController {
     var initialCenterPoint = CGPoint()
     var timer : Timer?
     
+    var timeStart = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
          makeBottleShakeAble()
-        startCountUpTimer(label: countUpLabel, timer: &timer)
+        
+         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
     func makeBottleShakeAble(){

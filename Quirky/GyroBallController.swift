@@ -27,6 +27,8 @@ class GyroBallController: UIViewController {
     var holeCentre : CGPoint!
     var timer : Timer?
     
+    var timeStart = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +38,7 @@ class GyroBallController: UIViewController {
         
         holeCentre = self.centerHoleImage.center
         
-        startCountUpTimer(label: countUpLabel, timer: &timer)
+        startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,8 +77,8 @@ class GyroBallController: UIViewController {
     }
     
     func stopBallWhenInsideTheHole(){
-        let holeRangeX = Int(self.centerHoleImage.center.x)...Int(self.centerHoleImage.center.x + 30)
-        let holeRangeY = Int(self.centerHoleImage.center.y)...Int(self.centerHoleImage.center.y + 30)
+        let holeRangeX = Int(self.centerHoleImage.center.x + 30)...Int(self.centerHoleImage.center.x + 30)
+        let holeRangeY = Int(self.centerHoleImage.center.y + 30)...Int(self.centerHoleImage.center.y + 30)
         if holeRangeX ~= Int(self.ballImage.center.x) && holeRangeY ~= Int(self.ballImage.center.y) {
             print("CENTER")
             self.toNextLevel()

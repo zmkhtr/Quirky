@@ -32,13 +32,15 @@ class PutYourFingerController: UIViewController {
     var timerCountUp : Timer?
     var count = 3
     
+    var timeStart = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //        let gif = UIImage.gifImageWithName("candle")
         //        imageLilin.image = gif
         initLongPressButtonListener()
-        startCountUpTimer(label: countUpLabel, timer: &timerCountUp)
+        startCountUpTimer(label: countUpLabel, timer: &timerCountUp, timeStart: timeStart)
     }
     
     func initTimer(){

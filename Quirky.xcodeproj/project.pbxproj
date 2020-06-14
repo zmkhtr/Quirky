@@ -13,6 +13,7 @@
 		205C0355248E679000BB2B6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 205C0353248E679000BB2B6F /* Main.storyboard */; };
 		205C0357248E679200BB2B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 205C0356248E679200BB2B6F /* Assets.xcassets */; };
 		205C035A248E679200BB2B6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 205C0358248E679200BB2B6F /* LaunchScreen.storyboard */; };
+		2088818224965C6700360BF3 /* TooLoudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2088818124965C6700360BF3 /* TooLoudController.swift */; };
 		20BB2F23249287E300E0ABD4 /* candle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 20BB2F22249287E300E0ABD4 /* candle.gif */; };
 		20D4CB8E248F69B100158583 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D4CB8D248F69B100158583 /* GIFImage.swift */; };
 		20F50CC32493828E0076E25D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50CC22493828E0076E25D /* ViewControllerExtension.swift */; };
@@ -32,6 +33,7 @@
 		205C0356248E679200BB2B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		205C0359248E679200BB2B6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		205C035B248E679200BB2B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2088818124965C6700360BF3 /* TooLoudController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooLoudController.swift; sourceTree = "<group>"; };
 		20BB2F22249287E300E0ABD4 /* candle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = candle.gif; path = ../../../Downloads/candle.gif; sourceTree = "<group>"; };
 		20D4CB8C248F68A100158583 /* candle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = candle.gif; sourceTree = "<group>"; };
 		20D4CB8D248F69B100158583 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				20F800DE2494CF59006E3D20 /* BottleController.swift */,
 				20F800E02494F069006E3D20 /* GyroBallController.swift */,
 				20F800E224950BB2006E3D20 /* CheeseController.swift */,
+				2088818124965C6700360BF3 /* TooLoudController.swift */,
 			);
 			path = Quirky;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				20F50CC32493828E0076E25D /* ViewControllerExtension.swift in Sources */,
 				205C0350248E679000BB2B6F /* SceneDelegate.swift in Sources */,
 				20F50CC52493A5CE0076E25D /* PutYourFingerController.swift in Sources */,
+				2088818224965C6700360BF3 /* TooLoudController.swift in Sources */,
 				20F800DF2494CF59006E3D20 /* BottleController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
