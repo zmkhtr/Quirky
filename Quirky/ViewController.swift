@@ -19,11 +19,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         //        let gif = UIImage.gifImageWithName("candle")
         //        imageLilin.image = gif
-        
+        setUserDefault()
         hideNavigationBar()
         setAnywhereClickableAndBlinking()
     }
     
+    func setUserDefault(){
+        MiniDatabase.setSoundPreference(isSoundOn: true)
+        MiniDatabase.setUserTime(userTime: 0)
+    }
     
     func setAnywhereClickableAndBlinking(){
         startLabel.text = text
@@ -43,6 +47,10 @@ class ViewController: UIViewController {
         } else {
             print("Tapped none")
         }
+    }
+    
+    @IBAction func unwindToMainScreen( _ seg: UIStoryboardSegue) {
+        print("Unwind")
     }
 }
 

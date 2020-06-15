@@ -29,15 +29,17 @@ class CheeseController: UIViewController {
         
         checkIfScreenshotIsTaken()
         
-        
+
+        changeSoundIconRed(soundIcon: buttonSound)
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
     
     func checkIfScreenshotIsTaken(){
         NotificationCenter.default.addObserver(forName: UIApplication.userDidTakeScreenshotNotification, object: nil, queue: OperationQueue.main) { notification in
-            self.performSegue(withIdentifier: "toLevelSix", sender: nil)
-            self.stopCountUpTimer(timer: self.timer!)
+            self.createWinDialog(message: "Yummy Cheese", segueIdentifier: "toLevelSix")
+//            self.performSegue(withIdentifier: "toLevelSix", sender: nil)
+            self.stopCountUpTimer(timer: self.timer!, time: self.timeStart)
         }
     }
     
@@ -53,6 +55,17 @@ class CheeseController: UIViewController {
         })
     }
     
+    @IBAction func changeSoundPreferences(_ sender: UIButton) {
+         changeSoundIconRed(soundIcon: buttonSound)
+     }
+     
+     
+     @IBAction func showHint(_ sender: UIButton) {
+         createHintDialog(hintMessage: "Capture the cheese")
+     }
+    @IBAction func endGame(_ sender: UIButton) {
+           createExitDialog()
+       }
 }
 
 extension UIImageView {

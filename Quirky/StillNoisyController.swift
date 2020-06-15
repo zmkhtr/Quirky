@@ -1,16 +1,16 @@
 //
-//  TooLoudController.swift
+//  StillNoisyController.swift
 //  Quirky
 //
-//  Created by Azam Mukhtar on 14/06/20.
+//  Created by Azam Mukhtar on 15/06/20.
 //  Copyright © 2020 Azam Mukhtar. All rights reserved.
 //
 
 import UIKit
-//import AVFoundation
+import AVFoundation
 
-class TooLoudController: UIViewController {
-    
+class StillNoisyController: UIViewController {
+
     @IBOutlet weak var countUpLabel: UILabel!
     
     @IBOutlet weak var buttonClose: UIButton!
@@ -41,7 +41,8 @@ class TooLoudController: UIViewController {
         super.viewDidLoad()
         
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
-        
+         listenVolumeButton()
+         changeSoundIconYellow(soundIcon: buttonSound)
     }
     
     @IBAction func volumeDown(_ sender: UIButton) {
@@ -53,17 +54,31 @@ class TooLoudController: UIViewController {
     }
     
     @IBAction func changeSoundPreferences(_ sender: UIButton) {
-        //        changeSoundIconYellow(soundIcon: buttonSound)
-        buttonSound.setImage(#imageLiteral(resourceName: "nav_sound_mute"), for: .normal)
-        MiniDatabase.setSoundPreference(isSoundOn: false)
-        createWinDialog(message: "Huff... you save my ear", segueIdentifier: "toLevelSeven")
-        self.stopCountUpTimer(timer: timer!, time: timeStart)
+                changeSoundIconYellow(soundIcon: buttonSound)
         
     }
     
     
     @IBAction func showHint(_ sender: UIButton) {
-        createHintDialog(hintMessage: "Silent please !")
+        createHintDialog(hintMessage: "Please calm down the sound")
+    }
+
+    var outputVolumeObserve: NSKeyValueObservation?
+    let audioSession = AVAudioSession.sharedInstance()
+
+    func listenVolumeButton() {
+        do {
+            try audioSession.setActive(true)
+        } catch {}
+
+        outputVolumeObserve = audioSession.observe(\.outputVolume) { (audioSession, changes) in
+            print("coba \(audioSession.outputVolume)")
+            
+            if (audioSession.outputVolume == 0.0){
+                 self.createWinDialog(message: "You doing great", segueIdentifier: "toLevelEight")
+                self.stopCountUpTimer(timer: self.timer!, time: self.timeStart)
+            }
+        }
     }
     @IBAction func endGame(_ sender: UIButton) {
            createExitDialog()

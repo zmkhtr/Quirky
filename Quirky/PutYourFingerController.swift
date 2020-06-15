@@ -40,6 +40,8 @@ class PutYourFingerController: UIViewController {
         //        let gif = UIImage.gifImageWithName("candle")
         //        imageLilin.image = gif
         initLongPressButtonListener()
+        
+        changeSoundIconYellow(soundIcon: buttonSound)
         startCountUpTimer(label: countUpLabel, timer: &timerCountUp, timeStart: timeStart)
     }
     
@@ -54,7 +56,8 @@ class PutYourFingerController: UIViewController {
             count = count - 1
             countDownLabel.text = String(count)
             if (count == 0){
-                performSegue(withIdentifier: "toLevelTwo", sender: nil)
+                createWinDialog(message: "It's kinda easy right?", segueIdentifier: "toLevelTwo")
+                stopCountUpTimer(timer: timerCountUp!, time: timeStart)
             }
         }
     }
@@ -97,5 +100,16 @@ class PutYourFingerController: UIViewController {
         }
     }
     
+    @IBAction func changeSoundPreferences(_ sender: UIButton) {
+        changeSoundIconYellow(soundIcon: buttonSound)
+    }
+    
+    
+    @IBAction func showHint(_ sender: UIButton) {
+        createHintDialog(hintMessage: "Be Patient")
+    }
+    @IBAction func endGame(_ sender: UIButton) {
+        createExitDialog()
+    }
 }
 

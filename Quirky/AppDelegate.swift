@@ -11,11 +11,35 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
 
+    let displayStatusChanged: CFNotificationCallback = { center, observer, name, object, info in
+        let str = name!.rawValue as CFString
+        if (str == "com.apple.springboard.lockcomplete" as CFString) {
+            let isDisplayStatusLocked = UserDefaults.standard
+            isDisplayStatusLocked.set(true, forKey: "isDisplayStatusLocked")
+            isDisplayStatusLocked.synchronize()
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+          let isDisplayStatusLocked = UserDefaults.standard
+          isDisplayStatusLocked.set(false, forKey: "isDisplayStatusLocked")
+          isDisplayStatusLocked.synchronize()
+          
+          // Darwin Notification
+          let cfstr = "com.apple.springboard.lockcomplete" as CFString
+          let notificationCenter = CFNotificationCenterGetDarwinNotifyCenter()
+          let function = displayStatusChanged
+          CFNotificationCenterAddObserver(notificationCenter,
+                                          nil,
+                                          function,
+                                          cfstr,
+                                          nil,
+                                          .deliverImmediately)
+          
+          return true
     }
 
     // MARK: UISceneSession Lifecycle

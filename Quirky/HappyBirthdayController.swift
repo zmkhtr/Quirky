@@ -15,7 +15,7 @@ class HappyBirthdayController: UIViewController {
     var recorder: AVAudioRecorder!
     var levelTimer = Timer()
     
-    let LEVEL_THRESHOLD: Float = -5.0
+    let LEVEL_THRESHOLD: Float = -3.0
     
     @IBOutlet weak var candleImage: UIImageView!
     
@@ -34,6 +34,8 @@ class HappyBirthdayController: UIViewController {
         
         loadCandleGif()
         listenToBlowMic()
+        
+        changeSoundIconYellow(soundIcon: buttonSound)
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
@@ -89,11 +91,27 @@ class HappyBirthdayController: UIViewController {
     func candleGoesOut(){
         recorder.stop()
         candleImage.image = #imageLiteral(resourceName: "candle_die")
-        performSegue(withIdentifier: "toLevelThree", sender: nil)
+        
+        createWinDialog(message: "Yuhuu.. Happy Birthday !", segueIdentifier: "toLevelThree")
+        stopCountUpTimer(timer: timer!, time: timeStart)
+//        performSegue(withIdentifier: "toLevelThree", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func changeSoundPreferences(_ sender: UIButton) {
+          changeSoundIconYellow(soundIcon: buttonSound)
+      }
+      
+      
+      @IBAction func showHint(_ sender: UIButton) {
+          createHintDialog(hintMessage: "What you usually do with birtday candle?")
+      }
+    
+    @IBAction func endGame(_ sender: UIButton) {
+           createExitDialog()
+       }
 }

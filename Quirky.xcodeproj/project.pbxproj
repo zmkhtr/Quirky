@@ -16,6 +16,11 @@
 		2088818224965C6700360BF3 /* TooLoudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2088818124965C6700360BF3 /* TooLoudController.swift */; };
 		20BB2F23249287E300E0ABD4 /* candle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 20BB2F22249287E300E0ABD4 /* candle.gif */; };
 		20D4CB8E248F69B100158583 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D4CB8D248F69B100158583 /* GIFImage.swift */; };
+		20D71250249715820080FE83 /* MiniDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7124F249715820080FE83 /* MiniDatabase.swift */; };
+		20D71252249723E10080FE83 /* StillNoisyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D71251249723E10080FE83 /* StillNoisyController.swift */; };
+		20D71254249726350080FE83 /* DarkBrightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D71253249726350080FE83 /* DarkBrightController.swift */; };
+		20D7125624973A3F0080FE83 /* LockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7125524973A3F0080FE83 /* LockController.swift */; };
+		20D712582497539C0080FE83 /* EndController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D712572497539C0080FE83 /* EndController.swift */; };
 		20F50CC32493828E0076E25D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50CC22493828E0076E25D /* ViewControllerExtension.swift */; };
 		20F50CC52493A5CE0076E25D /* PutYourFingerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50CC42493A5CE0076E25D /* PutYourFingerController.swift */; };
 		20F800DD2494ADFD006E3D20 /* HappyBirthdayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F800DC2494ADFD006E3D20 /* HappyBirthdayController.swift */; };
@@ -37,6 +42,11 @@
 		20BB2F22249287E300E0ABD4 /* candle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = candle.gif; path = ../../../Downloads/candle.gif; sourceTree = "<group>"; };
 		20D4CB8C248F68A100158583 /* candle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = candle.gif; sourceTree = "<group>"; };
 		20D4CB8D248F69B100158583 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
+		20D7124F249715820080FE83 /* MiniDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDatabase.swift; sourceTree = "<group>"; };
+		20D71251249723E10080FE83 /* StillNoisyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillNoisyController.swift; sourceTree = "<group>"; };
+		20D71253249726350080FE83 /* DarkBrightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkBrightController.swift; sourceTree = "<group>"; };
+		20D7125524973A3F0080FE83 /* LockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockController.swift; sourceTree = "<group>"; };
+		20D712572497539C0080FE83 /* EndController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndController.swift; sourceTree = "<group>"; };
 		20F50CC22493828E0076E25D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		20F50CC42493A5CE0076E25D /* PutYourFingerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutYourFingerController.swift; sourceTree = "<group>"; };
 		20F800DC2494ADFD006E3D20 /* HappyBirthdayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyBirthdayController.swift; sourceTree = "<group>"; };
@@ -92,6 +102,11 @@
 				20F800E02494F069006E3D20 /* GyroBallController.swift */,
 				20F800E224950BB2006E3D20 /* CheeseController.swift */,
 				2088818124965C6700360BF3 /* TooLoudController.swift */,
+				20D7124F249715820080FE83 /* MiniDatabase.swift */,
+				20D71251249723E10080FE83 /* StillNoisyController.swift */,
+				20D71253249726350080FE83 /* DarkBrightController.swift */,
+				20D7125524973A3F0080FE83 /* LockController.swift */,
+				20D712572497539C0080FE83 /* EndController.swift */,
 			);
 			path = Quirky;
 			sourceTree = "<group>";
@@ -177,12 +192,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				205C0352248E679000BB2B6F /* ViewController.swift in Sources */,
+				20D71254249726350080FE83 /* DarkBrightController.swift in Sources */,
 				205C034E248E679000BB2B6F /* AppDelegate.swift in Sources */,
 				20F800E324950BB2006E3D20 /* CheeseController.swift in Sources */,
+				20D71250249715820080FE83 /* MiniDatabase.swift in Sources */,
 				20F800E12494F069006E3D20 /* GyroBallController.swift in Sources */,
+				20D71252249723E10080FE83 /* StillNoisyController.swift in Sources */,
 				20F800DD2494ADFD006E3D20 /* HappyBirthdayController.swift in Sources */,
 				20D4CB8E248F69B100158583 /* GIFImage.swift in Sources */,
+				20D712582497539C0080FE83 /* EndController.swift in Sources */,
 				20F50CC32493828E0076E25D /* ViewControllerExtension.swift in Sources */,
+				20D7125624973A3F0080FE83 /* LockController.swift in Sources */,
 				205C0350248E679000BB2B6F /* SceneDelegate.swift in Sources */,
 				20F50CC52493A5CE0076E25D /* PutYourFingerController.swift in Sources */,
 				2088818224965C6700360BF3 /* TooLoudController.swift in Sources */,
@@ -330,7 +350,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = X7PX2RYRJL;
 				INFOPLIST_FILE = Quirky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -339,6 +360,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.azam.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = QuirkyDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -348,7 +370,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = X7PX2RYRJL;
 				INFOPLIST_FILE = Quirky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -357,6 +380,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.azam.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = QuirkyDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -46,10 +46,11 @@ extension UIViewController {
                 count = count + 1
                 let (h,m,s) = self.secondsToHoursMinutesSeconds(seconds: count)
                 label.text = "\(h)h \(m)m \(s)s"
+                MiniDatabase.setUserTime(userTime: MiniDatabase.getUserTime() + count)
             }
         }
     }
-    func stopCountUpTimer(timer: Timer){
+    func stopCountUpTimer(timer: Timer, time : Int){
         timer.invalidate()
     }
     
@@ -100,4 +101,66 @@ extension UIViewController {
             image.image = #imageLiteral(resourceName: "sound_three")
         }
     }
+    
+    func createWinDialog(message : String, segueIdentifier : String){
+        let alertController = UIAlertController(title: "You Win !", message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Go to Next Level", style: .default) { (action:UIAlertAction) in
+            self.performSegue(withIdentifier: segueIdentifier, sender: nil)
+        }
+        
+        alertController.addAction(action)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func createExitDialog(){
+        let alertController = UIAlertController(title: "End Game", message: "Are you sure want to end the game and back to main menu?", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Continue Game", style: .default) { (action:UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        let close = UIAlertAction(title: "Quit", style: .cancel) { (action:UIAlertAction) in
+            self.performSegue(withIdentifier: "unwindToMainScreen", sender: nil)
+        }
+        
+        alertController.addAction(action)
+        alertController.addAction(close)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func createHintDialog(hintMessage : String){
+        let alertController = UIAlertController(title: "Hint", message: hintMessage, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func changeSoundIconYellow(soundIcon : UIButton){
+        if (MiniDatabase.isSoundOn()) {
+            soundIcon.setImage(#imageLiteral(resourceName: "nav_sound_mute"), for: .normal)
+            MiniDatabase.setSoundPreference(isSoundOn: false)
+        } else {
+            soundIcon.setImage(#imageLiteral(resourceName: "nav_sound"), for: .normal)
+            MiniDatabase.setSoundPreference(isSoundOn: true)
+        }
+    }
+    
+    func changeSoundIconRed(soundIcon : UIButton){
+        if (MiniDatabase.isSoundOn()) {
+            soundIcon.setImage(#imageLiteral(resourceName: "nav_sound_merah_mute"), for: .normal)
+            MiniDatabase.setSoundPreference(isSoundOn: false)
+        } else {
+            soundIcon.setImage(#imageLiteral(resourceName: "nav_sound_merah"), for: .normal)
+            MiniDatabase.setSoundPreference(isSoundOn: true)
+        }
+    }
+    
 }

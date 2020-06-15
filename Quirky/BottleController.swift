@@ -26,9 +26,10 @@ class BottleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         makeBottleShakeAble()
+        makeBottleShakeAble()
         
-         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
+        changeSoundIconYellow(soundIcon: buttonSound)
+        startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
     func makeBottleShakeAble(){
@@ -53,11 +54,27 @@ class BottleController: UIViewController {
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-       changeBottleLiquidAndGoToNextLevel()
+        changeBottleLiquidAndGoToNextLevel()
     }
     
     func changeBottleLiquidAndGoToNextLevel(){
         bottleImage.image = #imageLiteral(resourceName: "bottle_combine")
-        performSegue(withIdentifier: "toLevelFour", sender: nil)
+        
+        createWinDialog(message: "Shake..Shake..Shake..", segueIdentifier: "toLevelFour")
+        stopCountUpTimer(timer: timer!, time: timeStart)
+        //        performSegue(withIdentifier: "toLevelFour", sender: nil)
     }
+    
+    @IBAction func changeSoundPreferences(_ sender: UIButton) {
+        changeSoundIconYellow(soundIcon: buttonSound)
+    }
+    
+    
+    @IBAction func showHint(_ sender: UIButton) {
+        createHintDialog(hintMessage: "Combine the liquid")
+    }
+    
+    @IBAction func endGame(_ sender: UIButton) {
+           createExitDialog()
+       }
 }

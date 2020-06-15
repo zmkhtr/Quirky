@@ -37,7 +37,8 @@ class GyroBallController: UIViewController {
         newCircleCentre = self.ballImage.center
         
         holeCentre = self.centerHoleImage.center
-        
+
+        changeSoundIconRed(soundIcon: buttonSound)
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
@@ -77,8 +78,8 @@ class GyroBallController: UIViewController {
     }
     
     func stopBallWhenInsideTheHole(){
-        let holeRangeX = Int(self.centerHoleImage.center.x + 30)...Int(self.centerHoleImage.center.x + 30)
-        let holeRangeY = Int(self.centerHoleImage.center.y + 30)...Int(self.centerHoleImage.center.y + 30)
+        let holeRangeX = Int(self.centerHoleImage.center.x - 30)...Int(self.centerHoleImage.center.x + 30)
+        let holeRangeY = Int(self.centerHoleImage.center.y - 30)...Int(self.centerHoleImage.center.y + 30)
         if holeRangeX ~= Int(self.ballImage.center.x) && holeRangeY ~= Int(self.ballImage.center.y) {
             print("CENTER")
             self.toNextLevel()
@@ -88,13 +89,23 @@ class GyroBallController: UIViewController {
     }
     
     func toNextLevel(){
-        stopCountUpTimer(timer: self.timer!)
-        performSegue(withIdentifier: "toLevelFive", sender: nil)
+        stopCountUpTimer(timer: timer!, time: timeStart)
+        createWinDialog(message: "Ball in the hole !!!", segueIdentifier: "toLevelFive")
+//        performSegue(withIdentifier: "toLevelFive", sender: nil)
     }
+    
+    @IBAction func changeSoundPreferences(_ sender: UIButton) {
+          changeSoundIconRed(soundIcon: buttonSound)
+      }
+      
+      
+      @IBAction func showHint(_ sender: UIButton) {
+          createHintDialog(hintMessage: "Balance in all things")
+      }
+    
+    @IBAction func endGame(_ sender: UIButton) {
+           createExitDialog()
+       }
 }
 
-extension CGFloat {
-    func clamp(min: CGFloat, _ max: CGFloat) -> CGFloat {
-        return Swift.max(min, Swift.min(max, self))
-    }
-}
+
