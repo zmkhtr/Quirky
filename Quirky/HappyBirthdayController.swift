@@ -35,9 +35,13 @@ class HappyBirthdayController: UIViewController {
         loadCandleGif()
         listenToBlowMic()
         
-        changeSoundIconYellow(soundIcon: buttonSound)
+         if MiniDatabase.isSoundOn() == false {
+                   changeSoundIconYellow(soundIcon: buttonSound)
+               }
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
+    
+    
     
     func loadCandleGif(){
         let gif = UIImage.gifImageWithName("candle")
@@ -92,11 +96,31 @@ class HappyBirthdayController: UIViewController {
         recorder.stop()
         candleImage.image = #imageLiteral(resourceName: "candle_die")
         
+        playWinSound()
         createWinDialog(message: "Yuhuu.. Happy Birthday !", segueIdentifier: "toLevelThree")
         stopCountUpTimer(timer: timer!, time: timeStart)
 //        performSegue(withIdentifier: "toLevelThree", sender: nil)
     }
-    
+    var objPlayer: AVAudioPlayer?
+      func playWinSound() {
+                guard let url = Bundle.main.url(forResource: "winsound", withExtension: "mp3") else { return }
+
+                do {
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
+        //            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                    try AVAudioSession.sharedInstance().setActive(true)
+
+                    // For iOS 11
+                    objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+                    guard let aPlayer = objPlayer else { return }
+                    aPlayer.play()
+
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

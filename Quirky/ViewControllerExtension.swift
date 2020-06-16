@@ -144,23 +144,33 @@ extension UIViewController {
     }
     
     func changeSoundIconYellow(soundIcon : UIButton){
+        let musicPlayer:AVAudioPlayer = AVAudioPlayer()
         if (MiniDatabase.isSoundOn()) {
             soundIcon.setImage(#imageLiteral(resourceName: "nav_sound_mute"), for: .normal)
             MiniDatabase.setSoundPreference(isSoundOn: false)
+            musicPlayer.volume = 0
         } else {
             soundIcon.setImage(#imageLiteral(resourceName: "nav_sound"), for: .normal)
             MiniDatabase.setSoundPreference(isSoundOn: true)
+            musicPlayer.volume = 1
         }
     }
     
     func changeSoundIconRed(soundIcon : UIButton){
+        let musicPlayer:AVAudioPlayer = AVAudioPlayer()
         if (MiniDatabase.isSoundOn()) {
             soundIcon.setImage(#imageLiteral(resourceName: "nav_sound_merah_mute"), for: .normal)
             MiniDatabase.setSoundPreference(isSoundOn: false)
+            musicPlayer.volume = 0
         } else {
             soundIcon.setImage(#imageLiteral(resourceName: "nav_sound_merah"), for: .normal)
             MiniDatabase.setSoundPreference(isSoundOn: true)
+            musicPlayer.volume = 1
         }
     }
     
+    
+ 
+
+      
 }

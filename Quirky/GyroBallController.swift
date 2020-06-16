@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import AVFoundation
 
 class GyroBallController: UIViewController {
     
@@ -37,8 +38,10 @@ class GyroBallController: UIViewController {
         newCircleCentre = self.ballImage.center
         
         holeCentre = self.centerHoleImage.center
-
-        changeSoundIconRed(soundIcon: buttonSound)
+        
+        if MiniDatabase.isSoundOn() == false {
+            changeSoundIconRed(soundIcon: buttonSound)
+        }
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
@@ -85,27 +88,49 @@ class GyroBallController: UIViewController {
             self.toNextLevel()
             self.ballImage.center = self.holeCentre
             self.motionManager.stopAccelerometerUpdates()
+            self.playWinSound()
+        }
+    }
+    
+    var objPlayer: AVAudioPlayer?
+    func playWinSound() {
+        guard let url = Bundle.main.url(forResource: "winsound", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
+            //            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            // For iOS 11
+            objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            
+            
+            guard let aPlayer = objPlayer else { return }
+            aPlayer.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
     func toNextLevel(){
         stopCountUpTimer(timer: timer!, time: timeStart)
         createWinDialog(message: "Ball in the hole !!!", segueIdentifier: "toLevelFive")
-//        performSegue(withIdentifier: "toLevelFive", sender: nil)
+        //        performSegue(withIdentifier: "toLevelFive", sender: nil)
     }
     
     @IBAction func changeSoundPreferences(_ sender: UIButton) {
-          changeSoundIconRed(soundIcon: buttonSound)
-      }
-      
-      
-      @IBAction func showHint(_ sender: UIButton) {
-          createHintDialog(hintMessage: "Balance in all things")
-      }
+        changeSoundIconRed(soundIcon: buttonSound)
+    }
+    
+    
+    @IBAction func showHint(_ sender: UIButton) {
+        createHintDialog(hintMessage: "Balance in all things")
+    }
     
     @IBAction func endGame(_ sender: UIButton) {
-           createExitDialog()
-       }
+        createExitDialog()
+    }
 }
 
 

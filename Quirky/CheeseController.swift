@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CheeseController: UIViewController {
     
@@ -29,8 +30,9 @@ class CheeseController: UIViewController {
         
         checkIfScreenshotIsTaken()
         
-
-        changeSoundIconRed(soundIcon: buttonSound)
+        if MiniDatabase.isSoundOn() == false {
+                   changeSoundIconRed(soundIcon: buttonSound)
+               }
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
     }
     
@@ -40,10 +42,31 @@ class CheeseController: UIViewController {
             self.createWinDialog(message: "Yummy Cheese", segueIdentifier: "toLevelSix")
 //            self.performSegue(withIdentifier: "toLevelSix", sender: nil)
             self.stopCountUpTimer(timer: self.timer!, time: self.timeStart)
+            self.playWinSound()
         }
     }
     
     
+     var objPlayer: AVAudioPlayer?
+       func playWinSound() {
+                 guard let url = Bundle.main.url(forResource: "winsound", withExtension: "mp3") else { return }
+
+                 do {
+                     try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
+         //            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                     try AVAudioSession.sharedInstance().setActive(true)
+
+                     // For iOS 11
+                     objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+                     guard let aPlayer = objPlayer else { return }
+                     aPlayer.play()
+
+                 } catch let error {
+                     print(error.localizedDescription)
+                 }
+             }
     
     @IBAction func cameraButtonPressed(_ sender: Any) {
         

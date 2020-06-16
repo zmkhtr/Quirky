@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -16,12 +17,42 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //        let gif = UIImage.gifImageWithName("candle")
-        //        imageLilin.image = gif
+        
         setUserDefault()
         hideNavigationBar()
         setAnywhereClickableAndBlinking()
+        playAudioFile()
+    }
+  var objPlayer: AVAudioPlayer?
+//    do {
+//        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
+//        print("Playback OK")
+//        try AVAudioSession.sharedInstance().setActive(true)
+//        print("Session is Active")
+//    } catch {
+//        print(error)
+//    }
+    func playAudioFile() {
+        guard let url = Bundle.main.url(forResource: "bgsound", withExtension: "mp3") else { return }
+
+        do {
+//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
+//                 print("Playback OK")
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            // For iOS 11
+            objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+            guard let aPlayer = objPlayer else { return }
+            aPlayer.numberOfLoops =  -1
+            aPlayer.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     func setUserDefault(){

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 
 class PutYourFingerController: UIViewController {
     
@@ -41,9 +41,12 @@ class PutYourFingerController: UIViewController {
         //        imageLilin.image = gif
         initLongPressButtonListener()
         
-        changeSoundIconYellow(soundIcon: buttonSound)
+        if MiniDatabase.isSoundOn() == false {
+            changeSoundIconYellow(soundIcon: buttonSound)
+        }
         startCountUpTimer(label: countUpLabel, timer: &timerCountUp, timeStart: timeStart)
     }
+
     
     func initTimer(){
         count = 3
@@ -56,11 +59,32 @@ class PutYourFingerController: UIViewController {
             count = count - 1
             countDownLabel.text = String(count)
             if (count == 0){
+                playWinSound()
                 createWinDialog(message: "It's kinda easy right?", segueIdentifier: "toLevelTwo")
                 stopCountUpTimer(timer: timerCountUp!, time: timeStart)
             }
         }
     }
+    var objPlayer: AVAudioPlayer?
+    func playWinSound() {
+              guard let url = Bundle.main.url(forResource: "winsound", withExtension: "mp3") else { return }
+
+              do {
+                  try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
+      //            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                  try AVAudioSession.sharedInstance().setActive(true)
+
+                  // For iOS 11
+                  objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+                  guard let aPlayer = objPlayer else { return }
+                  aPlayer.play()
+
+              } catch let error {
+                  print(error.localizedDescription)
+              }
+          }
     
     func initLongPressButtonListener(){
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(long(gesture:)))

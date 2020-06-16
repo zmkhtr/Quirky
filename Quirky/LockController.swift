@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class LockController: UIViewController {
     
@@ -28,7 +29,9 @@ class LockController: UIViewController {
         
         // Do any additional setup after loading the view.
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
-        
+        if MiniDatabase.isSoundOn() == false {
+                   changeSoundIconRed(soundIcon: buttonSound)
+               }
         enterBackground()
     }
     
@@ -85,6 +88,7 @@ class LockController: UIViewController {
                 isDisplayStatusLocked.synchronize()
                 self.createWinDialogEnd(message: "You completed the game !", segueIdentifier: "toLevelEnd")
                 self.stopCountUpTimer(timer: self.timer!, time: self.timeStart)
+                self.playWinSound()
             }
         }
         
@@ -110,4 +114,26 @@ class LockController: UIViewController {
     @IBAction func endGame(_ sender: UIButton) {
         createExitDialog()
     }
+    
+    
+     var objPlayer: AVAudioPlayer?
+       func playWinSound() {
+                 guard let url = Bundle.main.url(forResource: "winsound", withExtension: "mp3") else { return }
+
+                 do {
+                     try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
+         //            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                     try AVAudioSession.sharedInstance().setActive(true)
+
+                     // For iOS 11
+                     objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+                     guard let aPlayer = objPlayer else { return }
+                     aPlayer.play()
+
+                 } catch let error {
+                     print(error.localizedDescription)
+                 }
+             }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DarkBrightController: UIViewController {
     
@@ -30,7 +31,9 @@ class DarkBrightController: UIViewController {
         
         brightnessListener()
         startCountUpTimer(label: countUpLabel, timer: &timer, timeStart: timeStart)
-
+        if MiniDatabase.isSoundOn() == false {
+                   changeSoundIconYellow(soundIcon: buttonSound)
+               }
         activateProximitySensor()
     }
     
@@ -72,9 +75,30 @@ class DarkBrightController: UIViewController {
             createWinDialog(message: "Greate ! you made this far", segueIdentifier: "toLevelNine")
             self.stopCountUpTimer(timer: timer!, time: timeStart)
             UIScreen.main.brightness = 0.5
+            playWinSound()
         }
     }
     
+     var objPlayer: AVAudioPlayer?
+       func playWinSound() {
+                 guard let url = Bundle.main.url(forResource: "winsound", withExtension: "mp3") else { return }
+
+                 do {
+                     try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
+         //            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                     try AVAudioSession.sharedInstance().setActive(true)
+
+                     // For iOS 11
+                     objPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+                     guard let aPlayer = objPlayer else { return }
+                     aPlayer.play()
+
+                 } catch let error {
+                     print(error.localizedDescription)
+                 }
+             }
     
     @IBAction func changeSoundPreferences(_ sender: UIButton) {
         changeSoundIconYellow(soundIcon: buttonSound)
