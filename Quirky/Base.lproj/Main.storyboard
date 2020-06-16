@@ -25,7 +25,7 @@
                                 <rect key="frame" x="20" y="216" width="374" height="168"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="s0D-eU-ZDd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Axz-Er-e3m"/>
                             <constraint firstItem="K3s-7j-eZf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="128" id="Fxv-Ft-htr"/>

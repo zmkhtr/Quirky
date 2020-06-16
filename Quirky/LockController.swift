@@ -78,30 +78,36 @@ class LockController: UIViewController {
             }
             
             NotificationCenter.default.addObserver(forName:UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { (_) in
-                    print("Back to foreground.")
-                  //restore lock screen setting
-                  let isDisplayStatusLocked = UserDefaults.standard
-                  isDisplayStatusLocked.set(false, forKey: "isDisplayStatusLocked")
-                  isDisplayStatusLocked.synchronize()
+                print("Back to foreground.")
+                //restore lock screen setting
+                let isDisplayStatusLocked = UserDefaults.standard
+                isDisplayStatusLocked.set(false, forKey: "isDisplayStatusLocked")
+                isDisplayStatusLocked.synchronize()
                 self.createWinDialogEnd(message: "You completed the game !", segueIdentifier: "toLevelEnd")
                 self.stopCountUpTimer(timer: self.timer!, time: self.timeStart)
             }
         }
         
     }
+    //
+    //    private func DidUserPressLockButton() -> Bool {
+    //        let oldBrightness = UIScreen.main.brightness
+    //        UIScreen.main.brightness = oldBrightness + (oldBrightness <= 0.01 ? (0.01) : (-0.01))
+    //        return oldBrightness != UIScreen.main.brightness
+    //    }
     
     func createWinDialogEnd(message : String, segueIdentifier : String){
-           let alertController = UIAlertController(title: "You Doing Awesome !", message: message, preferredStyle: .alert)
-           
-           let action = UIAlertAction(title: "Next", style: .default) { (action:UIAlertAction) in
-               self.performSegue(withIdentifier: segueIdentifier, sender: nil)
-           }
-           
-           alertController.addAction(action)
-           
-           self.present(alertController, animated: true, completion: nil)
-       }
-       @IBAction func endGame(_ sender: UIButton) {
-              createExitDialog()
-          }
+        let alertController = UIAlertController(title: "You Doing Awesome !", message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Next", style: .default) { (action:UIAlertAction) in
+            self.performSegue(withIdentifier: segueIdentifier, sender: nil)
+            NotificationCenter.default.removeObserver(self)
+        }
+        
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    @IBAction func endGame(_ sender: UIButton) {
+        createExitDialog()
+    }
 }
